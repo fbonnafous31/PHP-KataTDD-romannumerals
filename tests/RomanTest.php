@@ -39,6 +39,19 @@ use function PHPUnit\Framework\assertEquals;
             assertEquals('4', $this->roman->translate('IV'));
         }
 
+        // Gestion du caractère X
+        public function testTranslateXReturn10() {
+            assertEquals('10', $this->roman->translate('X'));
+        }
+
+        public function testTranslateXIReturn11() {
+            assertEquals('11', $this->roman->translate('XI'));
+        }
+
+        public function testTranslateIXReturn9() {
+            assertEquals('9', $this->roman->translate('IX'));
+        }
+
     }
 
 ?>
