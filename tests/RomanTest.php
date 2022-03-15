@@ -64,6 +64,24 @@ use function PHPUnit\Framework\assertEquals;
         public function testTranslateXLReturn40() {
             assertEquals('40', $this->roman->translate('XL'));
         }
+
+        // Gestion du caractère C
+        public function testTranslateCReturn100() {
+            assertEquals('100', $this->roman->translate('C'));
+        }
+
+        public function testTranslateCXReturn110() {
+            assertEquals('110', $this->roman->translate('CX'));
+        }
+
+        public function testTranslateXCReturn90() {
+            assertEquals('90', $this->roman->translate('XC'));
+        }
+
+        public function testTranslateCCCLXIXReturn369() {
+            assertEquals('369', $this->roman->translate('CCCLXIX'));
+        }
+
     }
 
 ?>

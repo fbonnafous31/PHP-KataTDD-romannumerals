@@ -17,6 +17,8 @@
 
                 if ($value[$i] == 'L') $result += 50;
 
+                if ($value[$i] == 'C') $result += 100;
+
                 // IV
                 if (($previous == 'I') and ($value[$i] == 'V')) $result -= 2;
 
@@ -25,7 +27,10 @@
 
                 // XL
                 if (($previous == 'X') and ($value[$i] == 'L')) $result -= 20;
-            
+
+                // XC
+                if (($previous == 'X') and ($value[$i] == 'C')) $result -= 20;
+                
                 $previous = $value[$i];
             }
             return $result;
