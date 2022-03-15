@@ -82,6 +82,23 @@ use function PHPUnit\Framework\assertEquals;
             assertEquals('369', $this->roman->translate('CCCLXIX'));
         }
 
+        // Gestion du caractère D
+        public function testTranslateDReturn500() {
+            assertEquals('500', $this->roman->translate('D'));
+        }
+
+        public function testTranslateDCReturn600() {
+            assertEquals('600', $this->roman->translate('DC'));
+        }
+
+        public function testTranslateCDReturn400() {
+            assertEquals('400', $this->roman->translate('CD'));
+        }
+
+        public function testTranslateCDXLVIIIReturn448() {
+            assertEquals('448', $this->roman->translate('CDXLVIII'));
+        }
+
     }
 
 ?>
