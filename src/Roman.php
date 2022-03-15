@@ -9,30 +9,23 @@
             $previous = '';
             for($i = 0; $i < strlen($value); $i++) {
 
-                // Cas particulier IV
-                if (($previous == 'I') and ($value[$i] == 'V')) {
-                    return 4;
-                }
+                if ($value[$i] == 'I') $result += 1;
 
-                // Cas particulier IX
-                if (($previous == 'I') and ($value[$i] == 'X')) {
-                    return 9;
-                }
+                if ($value[$i] == 'V') $result += 5;
 
-                // Gestion I
-                if ($value[$i] == 'I') {
-                    $result += 1;
-                }
+                if ($value[$i] == 'X') $result += 10;
 
-                // Gestion V
-                if ($value[$i] == 'V') {
-                    $result += 5;
-                }
+                if ($value[$i] == 'L') $result += 50;
 
-                // Gestion X
-                if ($value[$i] == 'X') {
-                    $result += 10;
-                }
+                // IV
+                if (($previous == 'I') and ($value[$i] == 'V')) $result -= 2;
+
+                // IX
+                if (($previous == 'I') and ($value[$i] == 'X')) $result -= 2;
+
+                // XL
+                if (($previous == 'X') and ($value[$i] == 'L')) $result -= 20;
+            
                 $previous = $value[$i];
             }
             return $result;

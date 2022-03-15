@@ -52,6 +52,18 @@ use function PHPUnit\Framework\assertEquals;
             assertEquals('9', $this->roman->translate('IX'));
         }
 
+        // Gestion du caractère L
+        public function testTranslateLReturn50() {
+            assertEquals('50', $this->roman->translate('L'));
+        }
+
+        public function testTranslateLXReturn60() {
+            assertEquals('60', $this->roman->translate('LX'));
+        }  
+        
+        public function testTranslateXLReturn40() {
+            assertEquals('40', $this->roman->translate('XL'));
+        }
     }
 
 ?>
