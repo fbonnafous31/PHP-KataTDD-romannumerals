@@ -99,6 +99,27 @@ use function PHPUnit\Framework\assertEquals;
             assertEquals('448', $this->roman->translate('CDXLVIII'));
         }
 
+        // Gestion du M
+        public function testTranslateMReturn1000() {
+            assertEquals('1000', $this->roman->translate('M'));
+        }
+
+        public function testTranslateMCReturn1100() {
+            assertEquals('1100', $this->roman->translate('MC'));
+        }
+
+        public function testTranslateCMReturn900() {
+            assertEquals('900', $this->roman->translate('CM'));
+        }
+
+        public function testTranslateMCMXCVIIIReturn1998() {
+            assertEquals('1998', $this->roman->translate('MCMXCVIII'));
+        }
+
+        public function testTranslateMMDCCLIReturn2751() {
+            assertEquals('2751', $this->roman->translate('MMDCCLI'));
+        }
+
     }
 
 ?>

@@ -21,6 +21,8 @@
 
                 if ($value[$i] == 'D') $result += 500;
 
+                if ($value[$i] == 'M') $result += 1000;
+
                 // IV
                 if (($previous == 'I') and ($value[$i] == 'V')) $result -= 2;
 
@@ -35,7 +37,10 @@
 
                 // CD
                 if (($previous == 'C') and ($value[$i] == 'D')) $result -= 200;
-                
+
+                // CM
+                if (($previous == 'C') and ($value[$i] == 'M')) $result -= 200;
+
                 $previous = $value[$i];
             }
             return $result;
