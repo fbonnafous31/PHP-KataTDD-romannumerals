@@ -10,115 +10,198 @@ use function PHPUnit\Framework\assertEquals;
     class RomanTest extends TestCase {
 
         protected function setUp(): void {
-            $this->roman = new Roman();
+            $this->value = new Roman();
         }
 
+        // Conversion chiffre romain vers chiffres
         // Gestion du caractère I
         public function testTranslateIReturn1() {
-            assertEquals('1', $this->roman->translate('I'));
+            assertEquals('1', $this->value->toNumeric('I'));
         }
 
         public function testTranslateIIReturn2() {
-            assertEquals('2', $this->roman->translate('II'));
+            assertEquals('2', $this->value->toNumeric('II'));
         }
 
         public function testTranslateIIIReturn3() {
-            assertEquals('3', $this->roman->translate('III'));
+            assertEquals('3', $this->value->toNumeric('III'));
         }
 
         // Gestion du caractère V
         public function testTranslateVReturn5() {
-            assertEquals('5', $this->roman->translate('V'));
+            assertEquals('5', $this->value->toNumeric('V'));
         }
 
         public function testTranslateVIReturn6() {
-            assertEquals('6', $this->roman->translate('VI'));
+            assertEquals('6', $this->value->toNumeric('VI'));
         }
 
         public function testTranslateIVReturn4() {
-            assertEquals('4', $this->roman->translate('IV'));
+            assertEquals('4', $this->value->toNumeric('IV'));
         }
 
         // Gestion du caractère X
         public function testTranslateXReturn10() {
-            assertEquals('10', $this->roman->translate('X'));
+            assertEquals('10', $this->value->toNumeric('X'));
         }
 
         public function testTranslateXIReturn11() {
-            assertEquals('11', $this->roman->translate('XI'));
+            assertEquals('11', $this->value->toNumeric('XI'));
         }
 
         public function testTranslateIXReturn9() {
-            assertEquals('9', $this->roman->translate('IX'));
+            assertEquals('9', $this->value->toNumeric('IX'));
         }
 
         // Gestion du caractère L
         public function testTranslateLReturn50() {
-            assertEquals('50', $this->roman->translate('L'));
+            assertEquals('50', $this->value->toNumeric('L'));
         }
 
         public function testTranslateLXReturn60() {
-            assertEquals('60', $this->roman->translate('LX'));
+            assertEquals('60', $this->value->toNumeric('LX'));
         }  
         
         public function testTranslateXLReturn40() {
-            assertEquals('40', $this->roman->translate('XL'));
+            assertEquals('40', $this->value->toNumeric('XL'));
         }
 
         // Gestion du caractère C
         public function testTranslateCReturn100() {
-            assertEquals('100', $this->roman->translate('C'));
+            assertEquals('100', $this->value->toNumeric('C'));
         }
 
         public function testTranslateCXReturn110() {
-            assertEquals('110', $this->roman->translate('CX'));
+            assertEquals('110', $this->value->toNumeric('CX'));
         }
 
         public function testTranslateXCReturn90() {
-            assertEquals('90', $this->roman->translate('XC'));
+            assertEquals('90', $this->value->toNumeric('XC'));
         }
 
         public function testTranslateCCCLXIXReturn369() {
-            assertEquals('369', $this->roman->translate('CCCLXIX'));
+            assertEquals('369', $this->value->toNumeric('CCCLXIX'));
         }
 
         // Gestion du caractère D
         public function testTranslateDReturn500() {
-            assertEquals('500', $this->roman->translate('D'));
+            assertEquals('500', $this->value->toNumeric('D'));
         }
 
         public function testTranslateDCReturn600() {
-            assertEquals('600', $this->roman->translate('DC'));
+            assertEquals('600', $this->value->toNumeric('DC'));
         }
 
         public function testTranslateCDReturn400() {
-            assertEquals('400', $this->roman->translate('CD'));
+            assertEquals('400', $this->value->toNumeric('CD'));
         }
 
         public function testTranslateCDXLVIIIReturn448() {
-            assertEquals('448', $this->roman->translate('CDXLVIII'));
+            assertEquals('448', $this->value->toNumeric('CDXLVIII'));
         }
 
         // Gestion du M
         public function testTranslateMReturn1000() {
-            assertEquals('1000', $this->roman->translate('M'));
+            assertEquals('1000', $this->value->toNumeric('M'));
         }
 
         public function testTranslateMCReturn1100() {
-            assertEquals('1100', $this->roman->translate('MC'));
+            assertEquals('1100', $this->value->toNumeric('MC'));
         }
 
         public function testTranslateCMReturn900() {
-            assertEquals('900', $this->roman->translate('CM'));
+            assertEquals('900', $this->value->toNumeric('CM'));
         }
 
         public function testTranslateMCMXCVIIIReturn1998() {
-            assertEquals('1998', $this->roman->translate('MCMXCVIII'));
+            assertEquals('1998', $this->value->toNumeric('MCMXCVIII'));
         }
 
         public function testTranslateMMDCCLIReturn2751() {
-            assertEquals('2751', $this->roman->translate('MMDCCLI'));
+            assertEquals('2751', $this->value->toNumeric('MMDCCLI'));
         }
+
+
+        // Conversion chiffre vers chiffre romain
+        // Gestion du caractère I
+        public function testTranslate1ReturnI() {
+            assertEquals('I', $this->value->toRoman('1'));
+        }
+
+        public function testTranslate2ReturnII() {
+            assertEquals('II', $this->value->toRoman('2'));
+        }
+
+        public function testTranslate3ReturnIII() {
+            assertEquals('III', $this->value->toRoman('3'));
+        }
+
+        // Gestion du caractère V
+        public function testTranslate5ReturnV() {
+            assertEquals('V', $this->value->toRoman('5'));
+        }
+
+        public function testTranslate6ReturnVI() {
+            assertEquals('VI', $this->value->toRoman('6'));
+        }
+
+        public function testTranslate4ReturnIV() {
+            assertEquals('IV', $this->value->toRoman('4'));
+        }
+
+        // Gestion du caractère X
+        public function testTranslate10ReturnX() {
+            assertEquals('X', $this->value->toRoman('10'));
+        }
+
+        public function testTranslate11ReturnXI() {
+            assertEquals('XI', $this->value->toRoman('11'));
+        }
+
+        public function testTranslate9ReturnIX() {
+            assertEquals('IX', $this->value->toRoman('9'));
+        } 
+
+        public function testTranslate14ReturnXIV() {
+            assertEquals('XIV', $this->value->toRoman('14'));
+        }
+
+        public function testTranslate19ReturnXIX() {
+            assertEquals('XIX', $this->value->toRoman('19'));
+        }
+
+        // Gestion du caractère L
+        public function testTranslate50ReturnL() {
+            assertEquals('L', $this->value->toRoman('50'));
+        }
+
+        public function testTranslate54ReturnLIV() {
+            assertEquals('LIV', $this->value->toRoman('54'));
+        }
+
+        public function testTranslate60ReturnLX() {
+            assertEquals('LX', $this->value->toRoman('60'));
+        }  
+        
+        public function testTranslate40ReturnXL() {
+            assertEquals('XL', $this->value->toRoman('40'));
+        } 
+
+        public function testTranslate44ReturnXLIV() {
+            assertEquals('XLIV', $this->value->toRoman('44'));
+        } 
+
+        public function testTranslate45ReturnXLV() {
+            assertEquals('XLV', $this->value->toRoman('45'));
+        } 
+
+        public function testTranslate47ReturnXLVII() {
+            assertEquals('XLVII', $this->value->toRoman('47'));
+        }
+
+        public function testTranslate49ReturnXLIX() {
+            assertEquals('XLIX', $this->value->toRoman('49'));
+        } 
 
     }
 

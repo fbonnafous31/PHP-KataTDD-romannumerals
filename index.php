@@ -9,7 +9,7 @@ require_once ('src/Roman.php');
     if (isset ($_POST['input_roman'])) {
         $value = $_POST['input_roman'];
         $roman = new Roman();
-        $result = $roman->translate($value);
+        $result = $roman->toNumeric($value);
     }
 
 ?>
