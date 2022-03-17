@@ -53,58 +53,50 @@
 
             while ($total > 0) {
 
-                // Gestion du 50
-                if ($total >= 50) {
-                    $result[$i] = 'L';
-                    $total -= 50;
-                    $i ++;
-                }
+                $this->buildResult('L', 50, $total, $result, $i, 50, 100);
 
-                // Cas particulier 40
-                if ($total >= 40) {
-                    $result[$i] = 'X';
-                    $result[$i+1] = 'L';
-                    $total -= 40;
-                    $i +=2;
-                }
+                $this->exception(40, 'X', 'L', $total, $result, $i);
 
-                // Gestion du 10
-                if ($total >= 10) {
-                    $result[$i] = 'X';
-                    $total -= 10;
-                    $i ++;
-                }
+                $this->buildResult('X', 10, $total, $result, $i, 10, 50);
 
-                // Cas particulier 9
-                if ($total == 9) {
-                    $result[$i] = 'I';
-                    $result[$i+1] = 'X';
-                    $total -= 9;
-                }
+                $this->exception(9, 'I', 'X', $total, $result, $i);
 
-                // Cas particulier 4
-                if ($total == 4) {
-                    $result[$i] = 'I';
-                    $result[$i+1] = 'V';
-                    $total -= 4;
-                }
+                $this->exception(4, 'I', 'V', $total, $result, $i);
 
-                // Gestion du 5
-                if ($total >= 5) {
-                    $result[$i] = 'V';
-                    $total -= 5;
-                    $i ++;
-                }
+                $this->buildResult('V', 5, $total, $result, $i, 5, 10);
 
-                // Gestoin des unités
-                if ($total >= 1) {
-                    $result[$i] = 'I';
-                    $total -= 1;
-                    $i ++;
-                }
+                $this->buildResult('I', 1, $total, $result, $i, 1, 5);
 
             }
             return $result;
+        }
+
+        private function buildResult(string $romanCaracter, int $value, int &$total, string &$result, int &$i, int $minvalue, int $maxvalue): void {
+            if ($total >= $minvalue and $total < $maxvalue) {
+                $result[$i] = $romanCaracter;
+                $total -= $value;
+                $i ++;
+            }
+        }
+
+        private function buildException(int $exceptionvalue, string $romanCaracter1, string $romanCaracter2, int &$total, string &$result, int &$i): void {
+            $result[$i]   = $romanCaracter1;
+            $result[$i+1] = $romanCaracter2;
+            $total -= $exceptionvalue;   
+        }
+
+        private function exception(int $exceptionvalue, string $romanCaracter1, string $romanCaracter2, int &$total, string &$result, int &$i): void {
+            if ($exceptionvalue < 10 ) {
+                if ($total == $exceptionvalue) {
+                    $this->buildException($exceptionvalue, $romanCaracter1, $romanCaracter2, $total, $result, $i);
+                }
+            } 
+            if ($exceptionvalue >=10 and $exceptionvalue < 100 ) {
+                if ($total >= $exceptionvalue) {
+                    $this->buildException($exceptionvalue, $romanCaracter1, $romanCaracter2, $total, $result, $i);
+                    $i +=2;
+                }
+            }
         }
 
     }

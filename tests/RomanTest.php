@@ -183,6 +183,10 @@ use function PHPUnit\Framework\assertEquals;
             assertEquals('LX', $this->value->toRoman('60'));
         }  
         
+        public function testTranslate89ReturnLXXXIX() {
+            assertEquals('LXXXIX', $this->value->toRoman('89'));
+        }
+        
         public function testTranslate40ReturnXL() {
             assertEquals('XL', $this->value->toRoman('40'));
         } 
