@@ -12,12 +12,18 @@ require_once ('src/Roman.php');
         $result = $roman->toNumeric($value);
     }
 
+    if (isset ($_POST['input_arabic'])) {
+        $arabic_value = $_POST['input_arabic'];
+        $roman = new Roman();
+        $arabic_result = $roman->toRoman($arabic_value);
+    }
+
 ?>
 
 <div class="container">
     <form action="index.php" method="POST">
         <div class="form-group">
-            <input type="text" name="input_roman" id="input_roman" class="form-control" placeholder="Entrer une valeur" value="<?= $value ?>">
+            <input placeholder="Entrer un chiffre romaine" type="text" name="input_roman" id="input_roman" class="form-control" value="<?= $value ?>">
         </div>
         <button type="submit" class="btn btn-primary">Envoyer</button>
     </form>  
@@ -25,6 +31,21 @@ require_once ('src/Roman.php');
     <?php if (!is_null($result)): ?>
         <div class="alert alert-success">
             <?= $result ?>
+        </div>
+    <?php endif ?>
+</div>
+
+<div class="container">
+    <form action="index.php" method="POST">
+        <div class="form-group">
+            <input placeholder="Entrer un chiffre numérique" type="text" name="input_arabic" id="input_arabic" class="form-control" value="<?= $arabic_value ?>">
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>  
+
+    <?php if (!is_null($arabic_result)): ?>
+        <div class="alert alert-success">
+            <?= $arabic_result ?>
         </div>
     <?php endif ?>
 </div>

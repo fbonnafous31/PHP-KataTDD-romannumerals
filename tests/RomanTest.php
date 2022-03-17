@@ -220,6 +220,10 @@ use function PHPUnit\Framework\assertEquals;
             assertEquals('XC', $this->value->toRoman('90'));
         }
 
+        public function testTranslate200ReturnCC() {
+            assertEquals('CC', $this->value->toRoman('200'));
+        }
+
         public function testTranslate369ReturnCCCLXIX() {
             assertEquals('CCCLXIX', $this->value->toRoman('369'));
         }

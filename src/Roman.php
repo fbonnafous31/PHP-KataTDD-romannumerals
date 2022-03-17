@@ -55,19 +55,19 @@
 
                 $this->buildResult('M', '', 1000, $total, $result, $i, 1000, 10000);
 
-                $this->exception(900, 'C', 'M', $total, $result, $i, 1000);
+                $this->exception(900, 'C', 'M', $total, $result, $i, 999);
 
                 $this->buildResult('D', '', 500, $total, $result, $i, 500, 1000);
 
-                $this->exception(400, 'C', 'D', $total, $result, $i, 500);
+                $this->exception(400, 'C', 'D', $total, $result, $i, 499);
 
                 $this->buildResult('C', '', 100, $total, $result, $i, 100, 500);
 
-                $this->exception(90, 'X', 'C', $total, $result, $i, 100);
+                $this->exception(90, 'X', 'C', $total, $result, $i, 99);
 
                 $this->buildResult('L', '', 50, $total, $result, $i, 50, 100);
 
-                $this->exception(40, 'X', 'L', $total, $result, $i, 50);
+                $this->exception(40, 'X', 'L', $total, $result, $i, 49);
 
                 $this->buildResult('X', '', 10, $total, $result, $i, 10, 50);
 
