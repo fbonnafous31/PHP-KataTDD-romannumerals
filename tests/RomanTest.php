@@ -207,6 +207,61 @@ use function PHPUnit\Framework\assertEquals;
             assertEquals('XLIX', $this->value->toRoman('49'));
         } 
 
+        // Gestion du caractère C
+        public function testTranslate100ReturnC() {
+            assertEquals('C', $this->value->toRoman('100'));
+        }
+
+        public function testTranslate110ReturnCX() {
+            assertEquals('CX', $this->value->toRoman('110'));
+        }
+
+        public function testTranslate90ReturnXC() {
+            assertEquals('XC', $this->value->toRoman('90'));
+        }
+
+        public function testTranslate369ReturnCCCLXIX() {
+            assertEquals('CCCLXIX', $this->value->toRoman('369'));
+        }
+
+        // Gestion du caractère D
+        public function testTranslate500ReturnD() {
+            assertEquals('D', $this->value->toRoman('500'));
+        }
+
+        public function testTranslate600ReturnDC() {
+            assertEquals('DC', $this->value->toRoman('600'));
+        }
+
+        public function testTranslate400ReturnCD() {
+            assertEquals('CD', $this->value->toRoman('400'));
+        }
+
+        public function testTranslate448ReturnCDXLVIII() {
+            assertEquals('CDXLVIII', $this->value->toRoman('448'));
+        }
+
+        // Gestion du M
+        public function testTranslate1000ReturnM() {
+            assertEquals('M', $this->value->toRoman('1000'));
+        }
+
+        public function testTranslate1100ReturnMC(){
+            assertEquals('MC', $this->value->toRoman('1100'));
+        }
+
+        public function testTranslate900ReturnCM() {
+            assertEquals('CM', $this->value->toRoman('900'));
+        }
+
+        public function testTranslate1998ReturnMCMXCVIII() {
+            assertEquals('MCMXCVIII', $this->value->toRoman('1998'));
+        }
+
+        public function testTranslate2751ReturnMMDCCLI() {
+            assertEquals('MMDCCLI', $this->value->toRoman('2751'));
+        }
+
     }
 
 ?>

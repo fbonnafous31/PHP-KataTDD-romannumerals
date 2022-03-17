@@ -53,9 +53,21 @@
 
             while ($total > 0) {
 
+                $this->buildResult('M', '', 1000, $total, $result, $i, 1000, 10000);
+
+                $this->exception(900, 'C', 'M', $total, $result, $i, 1000);
+
+                $this->buildResult('D', '', 500, $total, $result, $i, 500, 1000);
+
+                $this->exception(400, 'C', 'D', $total, $result, $i, 500);
+
+                $this->buildResult('C', '', 100, $total, $result, $i, 100, 500);
+
+                $this->exception(90, 'X', 'C', $total, $result, $i, 100);
+
                 $this->buildResult('L', '', 50, $total, $result, $i, 50, 100);
 
-                $this->exception(40, 'X', 'L', $total, $result, $i);
+                $this->exception(40, 'X', 'L', $total, $result, $i, 50);
 
                 $this->buildResult('X', '', 10, $total, $result, $i, 10, 50);
 
@@ -82,14 +94,14 @@
             }
         }
 
-        private function exception(int $exceptionvalue, string $romanCaracter1, string $romanCaracter2, int &$total, string &$result, int &$i): void {
+        private function exception(int $exceptionvalue, string $romanCaracter1, string $romanCaracter2, int &$total, string &$result, int &$i, $limit = 1): void {
             if ($exceptionvalue < 10 ) {
                 if ($total == $exceptionvalue) {
                     $this->buildResult($romanCaracter1, $romanCaracter2, $exceptionvalue, $total, $result, $i);
                 }
             } 
-            if ($exceptionvalue >=10 and $exceptionvalue < 100 ) {
-                if ($total >= $exceptionvalue) {
+            if ($exceptionvalue >= 10) {
+                if ($total >= $exceptionvalue and $total <= $limit) {
                     $this->buildResult($romanCaracter1, $romanCaracter2, $exceptionvalue, $total, $result, $i);
                     $i++;
                 }
