@@ -53,48 +53,45 @@
 
             while ($total > 0) {
 
-                $this->buildResult('L', 50, $total, $result, $i, 50, 100);
+                $this->buildResult('L', '', 50, $total, $result, $i, 50, 100);
 
                 $this->exception(40, 'X', 'L', $total, $result, $i);
 
-                $this->buildResult('X', 10, $total, $result, $i, 10, 50);
+                $this->buildResult('X', '', 10, $total, $result, $i, 10, 50);
 
                 $this->exception(9, 'I', 'X', $total, $result, $i);
 
                 $this->exception(4, 'I', 'V', $total, $result, $i);
 
-                $this->buildResult('V', 5, $total, $result, $i, 5, 10);
+                $this->buildResult('V', '', 5, $total, $result, $i, 5, 10);
 
-                $this->buildResult('I', 1, $total, $result, $i, 1, 5);
+                $this->buildResult('I', '', 1, $total, $result, $i, 1, 5);
 
             }
             return $result;
         }
 
-        private function buildResult(string $romanCaracter, int $value, int &$total, string &$result, int &$i, int $minvalue, int $maxvalue): void {
+        private function buildResult(string $romanCaracter1, string $romanCaracter2, int $value, int &$total, string &$result, int &$i, int $minvalue = 1, int $maxvalue = 10000): void {
             if ($total >= $minvalue and $total < $maxvalue) {
-                $result[$i] = $romanCaracter;
+                $result[$i] = $romanCaracter1;
+                if (!empty($romanCaracter2)) {
+                    $result[$i+1] = $romanCaracter2;
+                }
                 $total -= $value;
                 $i ++;
             }
         }
 
-        private function buildException(int $exceptionvalue, string $romanCaracter1, string $romanCaracter2, int &$total, string &$result, int &$i): void {
-            $result[$i]   = $romanCaracter1;
-            $result[$i+1] = $romanCaracter2;
-            $total -= $exceptionvalue;   
-        }
-
         private function exception(int $exceptionvalue, string $romanCaracter1, string $romanCaracter2, int &$total, string &$result, int &$i): void {
             if ($exceptionvalue < 10 ) {
                 if ($total == $exceptionvalue) {
-                    $this->buildException($exceptionvalue, $romanCaracter1, $romanCaracter2, $total, $result, $i);
+                    $this->buildResult($romanCaracter1, $romanCaracter2, $exceptionvalue, $total, $result, $i);
                 }
             } 
             if ($exceptionvalue >=10 and $exceptionvalue < 100 ) {
                 if ($total >= $exceptionvalue) {
-                    $this->buildException($exceptionvalue, $romanCaracter1, $romanCaracter2, $total, $result, $i);
-                    $i +=2;
+                    $this->buildResult($romanCaracter1, $romanCaracter2, $exceptionvalue, $total, $result, $i);
+                    $i++;
                 }
             }
         }
